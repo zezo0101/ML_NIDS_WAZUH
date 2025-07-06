@@ -15,8 +15,8 @@ from telegram import Bot
 from telegram.error import TelegramError
 import asyncio
 # Replace these with your actual values
-BOT_TOKEN = 'XXXXXXXXXXXX' #https://api.telegram.org/bot7XXXXXXXXX/getUpdates
-GROUP_CHAT_ID = '-XXXXXX'  # Can be the group's username (with @) or ID
+BOT_TOKEN = '7693390312:AAGw3UV3jqkYifcByuBfyTrDiey0wfdc5ag' #https://api.telegram.org/bot7693390312:AAGw3UV3jqkYifcByuBfyTrDiey0wfdc5ag/getUpdates
+GROUP_CHAT_ID = '-4757872043'  # Can be the group's username (with @) or ID
 async def send_message_to_group(message):
     bot = Bot(token=BOT_TOKEN)
     
@@ -201,7 +201,7 @@ def extract_features(logs):
     return features
 
 # Define file paths (no label encoder)
-model_path = 'svc_model.pkl'
+model_path = 'svm_model.pkl'
 scaler_path = 'scaler.pkl'
 
 # Load the model and scaler
@@ -285,7 +285,7 @@ def update_connections_json(connections_folder, mapping, max_log_length=250):
                 'is_tcp': [features['is_tcp']],
                 'is_udp': [features['is_udp']],
                 'is_icmp': [features['is_icmp']],
-                'is_well_known_port': [features['is_well_known_port']],
+                'is_private_ip': [features['is_private_ip']],
                 'is_syn_flood': [features['is_syn_flood']],
                 'source_ports_count': [features['source_ports_count']],
                 'destination_ports_count': [features['destination_ports_count']],
@@ -311,6 +311,7 @@ def update_connections_json(connections_folder, mapping, max_log_length=250):
                 message = f"!! ALERT !! Connection file with key < {key} > : Predicted as {encoder[predicted_label]}."
                 print(message)
                 asyncio.run(send_message_to_group(message))
+            else: print(encoder[predicted_label])
     
     # Save updated data to connections.json
     with open(connections_json_path, "w", encoding="utf-8") as file:
