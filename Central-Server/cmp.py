@@ -15,8 +15,8 @@ from telegram import Bot
 from telegram.error import TelegramError
 import asyncio
 # Replace these with your actual values
-BOT_TOKEN = '7693390312:AAGw3UV3jqkYifcByuBfyTrDiey0wfdc5ag' #https://api.telegram.org/bot7693390312:AAGw3UV3jqkYifcByuBfyTrDiey0wfdc5ag/getUpdates
-GROUP_CHAT_ID = '-4757872043'  # Can be the group's username (with @) or ID
+BOT_TOKEN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+GROUP_CHAT_ID = '-XXXXXXXXX'  # Can be the group's username (with @) or ID
 async def send_message_to_group(message):
     bot = Bot(token=BOT_TOKEN)
     
